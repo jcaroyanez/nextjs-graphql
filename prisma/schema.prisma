@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Properties {
+  id                    Int                     @id @default(autoincrement())
+  numProperty           String                  @unique
+  appraisal             Int
+  name                  String
+  department            String
+  municipality          String
+  propertiesOwners       PropertiesOwners[]
+  propertiesConstructions PropertiesConstructions[]
+  propertiesLands         PropertiesLands[]
+}
+
+model Owners {
+  id              Int               @id @default(autoincrement())
+  type            String
+  typeDocument    String
+  document        String            @unique
+  name            String
+  address         String
+  phone           String
+  email           String
+  propertiesOwners PropertiesOwners[]
+}
+
+model Constructions {
+  id                    Int                     @id @default(autoincrement())
+  numberOfFloors        Int
+  totalArea             Int
+  type                  String
+  propertiesConstructions PropertiesConstructions[]
+}
+
+model Lands {
+  id               Int             @id @default(autoincrement())
+  area             Int
+  commercialValue  Int
+  hasWaterSources  Boolean
+  typeLand         String
+  hasConstructions Boolean
+  propertiesLands    PropertiesLands[]
+}
+
+model PropertiesOwners {
+  id         Int       @id @default(autoincrement())
+  idProperty Int
+  idOwner    Int
+  owner     Owners    @relation(fields: [idOwner], references: [id])
+  property  Properties @relation(fields: [idProperty], references: [id])
+}
+
+model PropertiesConstructions {
+  id             Int           @id @default(autoincrement())
+  idProperty     Int
+  idConstruction Int
+  construction   Constructions @relation(fields: [idConstruction], references: [id])
+  property      Properties     @relation(fields: [idProperty], references: [id])
+}
+
+model PropertiesLands {
+  id         Int       @id @default(autoincrement())
+  idProperty Int
+  idTerrain  Int
+  terrain    Lands     @relation(fields: [idTerrain], references: [id])
+  property  Properties @relation(fields: [idProperty], references: [id])
+}
