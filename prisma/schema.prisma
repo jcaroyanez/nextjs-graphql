@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
 }
 
 datasource db {
@@ -11,67 +12,47 @@ datasource db {
 }
 
 model Properties {
-  id                    Int                     @id @default(autoincrement())
-  numProperty           String                  @unique
-  appraisal             Int
-  name                  String
-  department            String
-  municipality          String
-  propertiesOwners       PropertiesOwners[]
-  propertiesConstructions PropertiesConstructions[]
-  propertiesLands         PropertiesLands[]
+  id            Int             @id @default(autoincrement())
+  numProperty   String          @unique
+  appraisal     Int
+  name          String
+  department    String
+  municipality  String
+  actived       Boolean         @default(true)
+  owners        Owners[]
+  constructions Constructions[]
+  land         Lands[]
 }
 
 model Owners {
-  id              Int               @id @default(autoincrement())
-  type            String
-  typeDocument    String
-  document        String            @unique
-  name            String
-  address         String
-  phone           String
-  email           String
-  propertiesOwners PropertiesOwners[]
+  id           Int        @id @default(autoincrement())
+  type         String
+  typeDocument String
+  document     String     @unique
+  name         String
+  address      String
+  phone        String
+  email        String
+  idProperty   Int
+  property     Properties @relation(fields: [idProperty], references: [id])
 }
 
 model Constructions {
-  id                    Int                     @id @default(autoincrement())
-  numberOfFloors        Int
-  totalArea             Int
-  type                  String
-  propertiesConstructions PropertiesConstructions[]
+  id             Int        @id @default(autoincrement())
+  numberOfFloors Int
+  totalArea      Int
+  type           String
+  idProperty     Int
+  property       Properties @relation(fields: [idProperty], references: [id])
 }
 
 model Lands {
-  id               Int             @id @default(autoincrement())
+  id               Int        @id @default(autoincrement())
   area             Int
   commercialValue  Int
   hasWaterSources  Boolean
   typeLand         String
   hasConstructions Boolean
-  propertiesLands    PropertiesLands[]
-}
-
-model PropertiesOwners {
-  id         Int       @id @default(autoincrement())
-  idProperty Int
-  idOwner    Int
-  owner     Owners    @relation(fields: [idOwner], references: [id])
-  property  Properties @relation(fields: [idProperty], references: [id])
-}
-
-model PropertiesConstructions {
-  id             Int           @id @default(autoincrement())
-  idProperty     Int
-  idConstruction Int
-  construction   Constructions @relation(fields: [idConstruction], references: [id])
-  property      Properties     @relation(fields: [idProperty], references: [id])
-}
-
-model PropertiesLands {
-  id         Int       @id @default(autoincrement())
-  idProperty Int
-  idTerrain  Int
-  terrain    Lands     @relation(fields: [idTerrain], references: [id])
-  property  Properties @relation(fields: [idProperty], references: [id])
+  idProperty       Int
+  property         Properties @relation(fields: [idProperty], references: [id])
 }
