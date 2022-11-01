@@ -18,6 +18,7 @@ const List = () => {
       rowKey="numProperty" 
       dataSource={data?.allProperties} 
       bordered
+      pagination={false}
     />
   )
 }
