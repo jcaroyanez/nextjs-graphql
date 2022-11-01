@@ -1,4 +1,4 @@
-import prisma from '../../../lib/primsa';
+import prisma from '@Lib/primsa';
 import { saveProperty, allProperties, findProperty } from '../services/cadastre';
 
 const resolvers = {

@@ -1,4 +1,4 @@
-import prisma from '../../../lib/primsa';
+import prisma from '@Lib/primsa';
 
 export const allProperties = () => {
   return prisma.properties.findMany()

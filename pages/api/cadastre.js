@@ -1,6 +1,5 @@
 import { ApolloServer } from "apollo-server-micro";
 import Cors from "micro-cors"
-import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import typeDefs from './definitions/queries';
 import resolvers from './resolvers/cadastre';
 

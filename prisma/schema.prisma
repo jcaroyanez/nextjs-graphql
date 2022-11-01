@@ -28,7 +28,7 @@ model Owners {
   id           Int        @id @default(autoincrement())
   type         String
   typeDocument String
-  document     String     @unique
+  document     String
   name         String
   address      String
   phone        String
