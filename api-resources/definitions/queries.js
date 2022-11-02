@@ -26,6 +26,7 @@ const typeDefs = gql`
     numberOfFloors: Int!
     totalArea: Int!
     type: String!
+    address: String!
   }
 
   type Land {
@@ -59,6 +60,7 @@ const typeDefs = gql`
     numberOfFloors: Int!
     totalArea: Int!
     type: String!
+    address: String!
   }
 
   input LandInput {

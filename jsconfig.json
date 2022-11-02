@@ -5,7 +5,8 @@
       "@Components/*": ["src/components/*"],
       "@Lib/*": ["lib/*"],
       "@Definitions/*": ["src/definitions/*"],
-      "@Hooks/*": ["src/hooks/*"]
+      "@Hooks/*": ["src/hooks/*"],
+      "@Shared/*": ["src/shared/*"]
     }
   }
 }

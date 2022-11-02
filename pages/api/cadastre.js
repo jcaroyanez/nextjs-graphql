@@ -1,7 +1,7 @@
 import { ApolloServer } from "apollo-server-micro";
 import Cors from "micro-cors"
-import typeDefs from './definitions/queries';
-import resolvers from './resolvers/cadastre';
+import typeDefs from '../../api-resources/definitions/queries';
+import resolvers from '../../api-resources/resolvers/cadastre';
 
 const apolloServer = new ApolloServer({
   typeDefs,

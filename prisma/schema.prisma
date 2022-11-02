@@ -42,6 +42,7 @@ model Constructions {
   numberOfFloors Int
   totalArea      Int
   type           String
+  address        String
   idProperty     Int
   property       Properties @relation(fields: [idProperty], references: [id])
 }
