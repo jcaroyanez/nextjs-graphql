@@ -1,16 +1,16 @@
-import { Checkbox, Form, Radio } from 'antd'
+import { Checkbox, Form, Radio, Button } from 'antd'
 import Input from 'antd/lib/input/Input'
 import { Typography } from 'antd';
 
 const { Title } = Typography;
 
 
-export const FormLand = () => {
+export const FormLand = ({ form, onFinish, initialValue }) => {
   return (
     <>
       <Title level={2}>Terreno</Title>
 
-      <Form layout='vertical'>
+      <Form form={form} layout='vertical' onFinish={onFinish} initialValues={{...initialValue}}>
         <Form.Item
           name='area'
           label='Área'
@@ -31,9 +31,16 @@ export const FormLand = () => {
           label='Cerca de'
           name='hasWaterSources'
           valuePropName='checked'
-          rules={[{ required: true }]}
         >
           <Checkbox>Fuentes de agua</Checkbox>
+        </Form.Item>
+
+        <Form.Item
+          label='Tiene construcciones'
+          name='hasConstructions'
+          valuePropName='checked'
+        >
+          <Checkbox>Si</Checkbox>
         </Form.Item>
 
         <Form.Item
@@ -46,6 +53,8 @@ export const FormLand = () => {
             <Radio value='urban'> Urbano </Radio>
           </Radio.Group>
         </Form.Item>
+
+        <Button type='primary' htmlType='submit'>Agregar</Button>
       </Form>
     </>
   )

@@ -14,7 +14,7 @@ datasource db {
 model Properties {
   id            Int             @id @default(autoincrement())
   numProperty   String          @unique
-  appraisal     Int
+  appraisal     String
   name          String
   department    String
   municipality  String
@@ -39,8 +39,8 @@ model Owners {
 
 model Constructions {
   id             Int        @id @default(autoincrement())
-  numberOfFloors Int
-  totalArea      Int
+  numberOfFloors String
+  totalArea      String
   type           String
   address        String
   idProperty     Int
@@ -49,8 +49,8 @@ model Constructions {
 
 model Lands {
   id               Int        @id @default(autoincrement())
-  area             Int
-  commercialValue  Int
+  area             String
+  commercialValue  String
   hasWaterSources  Boolean
   typeLand         String
   hasConstructions Boolean

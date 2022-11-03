@@ -23,7 +23,7 @@ const List = () => {
           </Button>
         </Link>
       </div>
-      <Table 
+      <Table
         locale={locale} 
         columns={COLUMNS_CADASTRE}
         rowKey='numProperty' 

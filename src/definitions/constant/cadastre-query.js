@@ -12,3 +12,9 @@ export const GET_ALL_CADASTRE = gql`
     }
   }
 `
+
+export const THERE_IS_PROPERTY = gql`
+  query Query($numProperty: String!) {
+    thereIsProperty(numProperty: $numProperty)
+  }
+`

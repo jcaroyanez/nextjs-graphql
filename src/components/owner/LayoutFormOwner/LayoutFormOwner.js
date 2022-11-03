@@ -9,14 +9,12 @@ export const LayoutFormOwner = () => {
   const owners = useSelector(state => state.owners)
   const dispatch = useDispatch()
   const [form] = Form.useForm()
-  console.log({owners});
 
   const findOwner = (document) => {
     return owners.find(owner => owner.document === document)
   }
 
   const onFinish = (value) => {
-    console.log(value)
     if(owners.length && findOwner(value.document)) {
       notification['error']({
         message: 'Este usuario ya esta agregado',

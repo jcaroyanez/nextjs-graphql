@@ -1,7 +1,7 @@
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
 import { Button, Tooltip, Modal } from 'antd'
 
-export const ActionsTable = ({ title, onOk = () => {}, onCancel = () => {} }) => {
+export const ActionsTable = ({ title, showEdit ,onOk = () => {}, onCancel = () => {} }) => {
 
   const showModal = () => {
     Modal.confirm({
@@ -22,7 +22,7 @@ export const ActionsTable = ({ title, onOk = () => {}, onCancel = () => {} }) =>
 
   return (
     <>
-      <Tooltip placement='top' title='Editar'>
+      {showEdit && <Tooltip placement='top' title='Editar'>
         <Button 
           style={{ marginRight: 10 }} 
           type='text' shape='circle' 
@@ -30,7 +30,7 @@ export const ActionsTable = ({ title, onOk = () => {}, onCancel = () => {} }) =>
             style={{ color: '#FCE700', fontSize: 20 }} />
           } 
         />
-      </Tooltip>
+      </Tooltip>}
 
       <Tooltip placement='top' title='Eliminar'>
         <Button 

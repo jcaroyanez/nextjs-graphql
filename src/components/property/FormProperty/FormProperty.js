@@ -4,9 +4,7 @@ import { Typography } from 'antd';
 
 const { Title } = Typography;
 
-export const FormProperty = ({ onFinish }) => {
-  const [form] = Form.useForm();
-
+export const FormProperty = ({ form, onFinish }) => {
   return (
     <>
       <Title>Predio</Title>

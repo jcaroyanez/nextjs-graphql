@@ -4,7 +4,7 @@ const typeDefs = gql`
   type Property {
     id: ID!
     numProperty: String!
-    appraisal: Int!
+    appraisal: String!
     name: String!
     department: String!
     municipality: String!
@@ -23,24 +23,31 @@ const typeDefs = gql`
 
   type Construction {
     id: ID!
-    numberOfFloors: Int!
-    totalArea: Int!
+    numberOfFloors: String!
+    totalArea: String!
     type: String!
     address: String!
   }
 
   type Land {
     id: ID!
-    area: Int!
-    commercialValue: Int!
+    area: String!
+    commercialValue: String!
     hasWaterSources: Boolean!
     typeLand: String!
     hasConstructions: Boolean!
   }
 
+  type Cadastre {
+    property: Property
+    owners: [Owner]
+    constructions: [Construction]
+    land: Land
+  }
+
   input PropertyInput {
     numProperty: String!
-    appraisal: Int!
+    appraisal: String!
     name: String!
     department: String!
     municipality: String!
@@ -57,15 +64,15 @@ const typeDefs = gql`
   }
 
   input ConstructionInput {
-    numberOfFloors: Int!
-    totalArea: Int!
+    numberOfFloors: String!
+    totalArea: String!
     type: String!
     address: String!
   }
 
   input LandInput {
-    area: Int!
-    commercialValue: Int!
+    area: String!
+    commercialValue: String!
     hasWaterSources: Boolean!
     typeLand: String!
     hasConstructions: Boolean!
@@ -73,9 +80,10 @@ const typeDefs = gql`
 
   type Query {
     allProperties: [Property]
-    findProperty(
+    thereIsProperty(
       numProperty: String!
-    ): Property
+    ): Boolean
+    findProperty(id: Int!): Cadastre
   }
 
   type Mutation {
@@ -84,6 +92,9 @@ const typeDefs = gql`
       owners: [OwnerInput]!
       constructions: [ConstructionInput]!
       land: LandInput
+    ): Property
+    deleteProperty(
+      id: Int!
     ): Property
   }
 `

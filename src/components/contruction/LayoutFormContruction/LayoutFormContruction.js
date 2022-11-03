@@ -10,10 +10,9 @@ export const LayoutFormContruction = () => {
   const constructions = useSelector(state => state.constructions)
   const dispatch = useDispatch()
   const [form] = Form.useForm()
-  console.log({constructions});
+
   const onFinish = (value) => {
     const newValue = {...value, id: uuid()}
-    console.log(newValue);
     dispatch(creatorAddContrunction(newValue))
     form.resetFields()
   }

@@ -1,8 +1,9 @@
-import { ACTION_CONSTRUCTION, ACTION_OWNERS } from "../actions/actions"
+import { ACTION_CADASTRE, ACTION_CONSTRUCTION, ACTION_LAND, ACTION_OWNERS } from "../actions/actions"
 
 const initState = {
   owners: [],
-  constructions: []
+  constructions: [],
+  land: null
 }
 
 export const cadastreReducer = (state = initState, action) => {
@@ -27,7 +28,18 @@ export const cadastreReducer = (state = initState, action) => {
         ...state,
         constructions: state.constructions
           .filter(contruction => contruction.id !== action.payload)
-      }  
+      }
+    case ACTION_LAND.add: {
+      return {
+        ...state,
+        land: action.payload
+      }
+    }
+    case ACTION_CADASTRE.reset: {
+      return {
+        ...initState
+      }
+    }  
     default:
       return state
   }

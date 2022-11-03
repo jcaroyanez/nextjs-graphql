@@ -14,3 +14,13 @@ export const TYPE_CONTRUCTION = {
   commercial: 'Comercial',
   residential: 'Residencial'
 }
+
+export const TYPE_LAND = {
+  rural: 'Rural',
+  urban: 'Urbano'
+}
+
+export const ENTITY_STATE_MESSAGE = {
+  owners: 'Ingrese un propietario',
+  constructions: 'Ingrese una Contrución'
+}

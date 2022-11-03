@@ -1,6 +1,7 @@
 import { OwnerActionsWraper } from '@Components/owner/OwnerWraperActions/OwnerActionsWraper'
 import { ConstructionActionsWraper } from '@Components/contruction/ContructionActionsWraper/ConstructionActionsWraper'
 import { TYPE_CONTRUCTION, TYPE_DOCUMENT, TYPE_OWNER } from '@Definitions/constant/constant'
+import { PropertyActionsWraper } from '@Components/property/PropertyActionsWraper/PropertyActionsWraper'
 
 export const COLUMNS_CADASTRE = [
   {
@@ -32,7 +33,7 @@ export const COLUMNS_CADASTRE = [
     title: 'Actions',
     key: 'action',
     render: (_, records) => (
-      <span>Actions</span>
+      <PropertyActionsWraper data={records} />
     )
   },
 ]
