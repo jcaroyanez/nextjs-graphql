@@ -2,7 +2,7 @@
 
 Primero cambiar la url para la conexión de su BD, en el archivo .env la variable DATABASE_URL
 
-Secundo correr la migración de de DB con
+Secundo correr la migración de la DB con
 ```bash
 npx prisma db push
 ```
