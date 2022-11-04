@@ -1,4 +1,12 @@
-import { saveProperty, allProperties, thereIsProperty, deleteProperty, findProperty } from '../services/cadastre';
+import {
+  saveProperty,
+  allProperties,
+  thereIsProperty,
+  deleteProperty,
+  findProperty,
+  thereIsPropertyUpdate,
+  updateProperty
+} from '../services/cadastre';
 
 const resolvers = {
   Query: {
@@ -8,10 +16,14 @@ const resolvers = {
     thereIsProperty: (_root, args) => {
       return thereIsProperty(args.numProperty)
     },
-    findProperty: async(_root, args) => {
+    findProperty: async (_root, args) => {
       const { id } = args
       return findProperty(id)
-    }  
+    },
+    thereIsPropertyUpdate: (_root, args) => {
+      const { id, numProperty } = args
+      return thereIsPropertyUpdate({ id, numProperty })
+    }
   },
   Mutation: {
     createdProperty: (_root, args) => {
@@ -21,6 +33,10 @@ const resolvers = {
     deleteProperty: (_root, args) => {
       const { id } = args;
       return deleteProperty(id)
+    },
+    updateProperty: (_root, args) => {
+      const { property, constructions, owners, land } = args
+      return updateProperty({ property, constructions, owners, land })
     }
   }
 }

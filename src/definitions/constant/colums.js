@@ -1,7 +1,8 @@
 import { OwnerActionsWraper } from '@Components/owner/OwnerWraperActions/OwnerActionsWraper'
 import { ConstructionActionsWraper } from '@Components/contruction/ContructionActionsWraper/ConstructionActionsWraper'
-import { TYPE_CONTRUCTION, TYPE_DOCUMENT, TYPE_OWNER } from '@Definitions/constant/constant'
+import { TYPE_CONTRUCTION, TYPE_DOCUMENT, TYPE_LAND, TYPE_OWNER } from '@Definitions/constant/constant'
 import { PropertyActionsWraper } from '@Components/property/PropertyActionsWraper/PropertyActionsWraper'
+import { LandWraperActions } from '@Components/land/LandWraperActions/LandWraperActions'
 
 export const COLUMNS_CADASTRE = [
   {
@@ -116,5 +117,44 @@ export const COLUMS_CONTRUCTION = [
     render: (_, records) => (
       <ConstructionActionsWraper data={records} />
     )
+  }
+]
+
+export const COLUMS_LAND = [
+  {
+    title: 'Área',
+    key: 'area',
+    dataIndex: 'area'
+  },
+  {
+    title: 'Valor comercial',
+    key: 'commercialValue',
+    dataIndex: 'commercialValue'
+  },
+  {
+    title: 'Fuentes de agua',
+    key: 'hasWaterSources',
+    render: (_, { hasWaterSources }) => (
+      <span>{hasWaterSources ? 'Si' : 'No'}</span>
+    )
+  },
+  {
+    title: 'Tipo',
+    key: 'typeLand',
+    render: (_, {typeLand}) => (
+      <span>{TYPE_LAND[typeLand]}</span>
+    )
+  },
+  {
+    title: 'Construcciones',
+    key: 'hasConstructions',
+    render: (_, { hasConstructions }) => (
+      <span>{hasConstructions ? 'Si' : 'No'}</span>
+    )
+  },
+  {
+    title: 'Acciones',
+    key: 'action',
+    render: () => (<LandWraperActions />)
   }
 ]

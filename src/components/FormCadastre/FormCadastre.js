@@ -17,20 +17,10 @@ export const FormCadastre = () => {
   const createdCadastre = useCreatedProperty()
   const refetch = useThereIsProperty()
   const [form] = Form.useForm();
-  console.log({ state });
 
-  const onFinish = async (value) => {
-    const { data } = await refetch({ numProperty: value.numProperty })
-    if (data.thereIsProperty) {
-      notification['error']({
-        message: 'Este numero predial ya se encuentra registrado',
-      })
-      return
-    }
-
+  const sendForm = (value) => {
     if (validForm(state)) {
-      const dataForm = { property: { ...value }, ...state }
-
+      const dataForm = {...state, property: value}
       createdCadastre({
         variables: {
           ...mapState(dataForm)
@@ -44,6 +34,17 @@ export const FormCadastre = () => {
       notification['success']({
         message: 'Catastro registrado con exito'
       })
+    } 
+  }
+
+  const onFinish = async (value) => {
+    const { data } = await refetch({ numProperty: value.numProperty })
+    if (data.thereIsProperty) {
+      notification['error']({
+        message: 'Este numero predial ya se encuentra registrado',
+      })
+    } else {
+      sendForm(value)
     }
   }
 
@@ -56,7 +57,7 @@ export const FormCadastre = () => {
       <div className={classes['content-navigation']}>
         <Link href='/' passHref>
           <Button type='primary' shape='round' icon={<UnorderedListOutlined />}>
-            Listado de catrastro
+            Listado de catastro
           </Button>
         </Link>
       </div>

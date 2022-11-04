@@ -9,6 +9,8 @@ const locale = {
 
 export const TableContruction = ({ constructions }) => {
   return (
-    <Table locale={locale} rowKey='id' columns={COLUMS_CONTRUCTION} dataSource={constructions} />
+    <Table locale={locale} rowKey='id' columns={COLUMS_CONTRUCTION} dataSource={constructions} pagination={{
+      defaultPageSize: 5
+    }}/>
   )
 }

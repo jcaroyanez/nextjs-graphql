@@ -13,8 +13,8 @@ export const PreviewLand = ({ land, onClick }) => {
         <Tooltip title='Editar'>
           <Button
             type='primary'
-            shape="circle"
-            size="large"
+            shape='circle'
+            size='large'
             icon={<EditOutlined style={{ fontSize: 20 }} />}
             onClick={onClick}
           />

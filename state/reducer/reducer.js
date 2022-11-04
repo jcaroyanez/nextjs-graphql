@@ -1,6 +1,7 @@
-import { ACTION_CADASTRE, ACTION_CONSTRUCTION, ACTION_LAND, ACTION_OWNERS } from "../actions/actions"
+import { ACTION_CADASTRE, ACTION_CONSTRUCTION, ACTION_LAND, ACTION_OWNERS } from '../actions/actions'
 
 const initState = {
+  property: null,
   owners: [],
   constructions: [],
   land: null
@@ -35,11 +36,21 @@ export const cadastreReducer = (state = initState, action) => {
         land: action.payload
       }
     }
+    case ACTION_LAND.delete: 
+      return {
+        ...state,
+        land: null
+      }
     case ACTION_CADASTRE.reset: {
       return {
         ...initState
       }
-    }  
+    }
+    case ACTION_CADASTRE.updateAll: {
+      return {
+        ...action.payload
+      }
+    }
     default:
       return state
   }

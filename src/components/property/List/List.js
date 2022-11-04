@@ -1,9 +1,11 @@
-import { Table, Empty, Button } from 'antd';
+import { Table, Empty, Button, Typography } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { COLUMNS_CADASTRE } from '@Definitions/constant/colums';
 import { useGetAllCadastre } from '@Hooks/cadastre'
 import Link from 'next/link'
 import classes from './List.module.scss'
+
+const { Title } = Typography
 
 const locale = {
   emptyText: (
@@ -17,6 +19,7 @@ const List = () => {
   return (
     <>
       <div className={classes['content-navigation']}>
+        <Title>Predios</Title>
         <Link href='/catastro/crear' passHref>
           <Button type='primary' shape='round' icon={<PlusOutlined />}>
             Registrar catastro
@@ -29,6 +32,9 @@ const List = () => {
         rowKey='numProperty' 
         dataSource={data?.allProperties} 
         bordered
+        pagination={{
+          defaultPageSize: 5
+        }}
       />
     </>
   )

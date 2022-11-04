@@ -1,17 +1,17 @@
 .container {
   max-width: $lg;
   margin: 30px auto;
-  padding: 0px 20px;
+  padding: 15px 20px;
 
   @media (min-width: $sm) {
-    padding: 0px 40px;
+    padding: 15px 40px;
   }
 
   @media (min-width: $md) {
-    padding: 0px 55px;
+    padding: 15px 55px;
   }
 
   @media (min-width: $lg) {
-     padding: 0px 80px;
+     padding: 15px 80px;
   }
 }

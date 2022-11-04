@@ -9,11 +9,13 @@ export const ACTION_CONSTRUCTION = {
 }
 
 export const ACTION_LAND = {
-  add: '@land/add'
+  add: '@land/add',
+  delete: '@land/delete'
 }
 
 export const ACTION_CADASTRE = {
-  reset: '@cadastre/reset'
+  reset: '@cadastre/reset',
+  updateAll: '@cadastre/updateAll'
 }
 
 export const creatorAddOwner = (owner) => {
@@ -54,5 +56,18 @@ export const creatorAddLand = (land) => {
 export const creatorCadastreResetState = () => {
   return {
     type: ACTION_CADASTRE.reset,
+  }
+}
+
+export const creatorCadastreUpdateAll = (property) => {
+  return {
+    type: ACTION_CADASTRE.updateAll,
+    payload: property
+  }
+}
+
+export const creatorDeleteLand = () => {
+  return {
+    type: ACTION_LAND.delete
   }
 }

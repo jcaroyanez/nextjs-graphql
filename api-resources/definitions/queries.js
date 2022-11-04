@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-micro";
+import { gql } from 'apollo-server-micro';
 
 const typeDefs = gql`
   type Property {
@@ -46,6 +46,7 @@ const typeDefs = gql`
   }
 
   input PropertyInput {
+    id: Int
     numProperty: String!
     appraisal: String!
     name: String!
@@ -54,6 +55,7 @@ const typeDefs = gql`
   }
 
   input OwnerInput {
+    id: Int
     type: String!
     typeDocument: String!
     document: String!
@@ -64,6 +66,7 @@ const typeDefs = gql`
   }
 
   input ConstructionInput {
+    id: Int
     numberOfFloors: String!
     totalArea: String!
     type: String!
@@ -71,6 +74,7 @@ const typeDefs = gql`
   }
 
   input LandInput {
+    id: Int
     area: String!
     commercialValue: String!
     hasWaterSources: Boolean!
@@ -84,10 +88,17 @@ const typeDefs = gql`
       numProperty: String!
     ): Boolean
     findProperty(id: Int!): Cadastre
+    thereIsPropertyUpdate(id: Int!, numProperty: String!): Boolean
   }
 
   type Mutation {
     createdProperty(
+      property: PropertyInput!
+      owners: [OwnerInput]!
+      constructions: [ConstructionInput]!
+      land: LandInput
+    ): Property
+    updateProperty(
       property: PropertyInput!
       owners: [OwnerInput]!
       constructions: [ConstructionInput]!

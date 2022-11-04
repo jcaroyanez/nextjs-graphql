@@ -4,11 +4,11 @@ import { Typography } from 'antd';
 
 const { Title } = Typography;
 
-export const FormProperty = ({ form, onFinish }) => {
+export const FormProperty = ({ form, onFinish, initialValues }) => {
   return (
     <>
       <Title>Predio</Title>
-      <Form layout='vertical' form={form} onFinish={onFinish}>
+      <Form layout='vertical' form={form} onFinish={onFinish} initialValues={{...initialValues}}>
         <Form.Item
           name='numProperty'
           label='Numero predial'

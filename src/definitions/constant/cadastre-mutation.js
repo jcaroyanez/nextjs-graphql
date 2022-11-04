@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const CREATED_CADASTRE = gql`
   mutation Mutation($property: PropertyInput!, $owners: [OwnerInput]!, 
@@ -26,4 +26,19 @@ export const DELETE_PROPERTY = gql`
       municipality
     }
   }
+`
+
+export const UPDATE_PROPERTY = gql`
+mutation Mutation($property: PropertyInput!, $owners: [OwnerInput]!, 
+  $constructions: [ConstructionInput]!, $land: LandInput) {
+  updateProperty(property: $property, owners: $owners, 
+  constructions: $constructions, land: $land) {
+    id
+    numProperty
+    appraisal
+    name
+    department
+    municipality
+  }
+}
 `

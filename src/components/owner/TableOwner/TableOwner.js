@@ -9,6 +9,8 @@ const locale = {
 
 export const TableOwner = ({ owners }) => {
   return (
-    <Table locale={locale} rowKey='document' columns={COLUMNS_OWNER} dataSource={owners} />
+    <Table locale={locale} rowKey='document' columns={COLUMNS_OWNER} dataSource={owners} pagination={{
+      defaultPageSize: 5
+    }}/>
   )
 }
